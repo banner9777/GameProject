@@ -29,7 +29,8 @@ public class ExplosionAdder : MonoBehaviour
         {
             foreach (var rb in m_affectedRigidbodies)
             {
-                rb.AddExplosionForce(m_explosionForce, m_screenCamera.ScreenToWorldPoint(Input.mousePosition - new Vector3(0, 0, m_screenCamera.transform.position.z + Random.Range(-1f, 1f))), m_explosionRadius, 2f, ForceMode.Impulse);
+                if (!rb.GetComponent<GroundCheck>() || rb.GetComponent<GroundCheck>().Grounded())
+                    rb.AddExplosionForce(m_explosionForce, m_screenCamera.ScreenToWorldPoint(Input.mousePosition - new Vector3(0, 0, m_screenCamera.transform.position.z + Random.Range(-1f, 1f))), m_explosionRadius, 1.25f, ForceMode.Impulse);
             }
             cooldownTimer = 0f;
         }
