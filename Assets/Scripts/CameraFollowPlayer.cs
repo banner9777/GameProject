@@ -7,7 +7,7 @@ public class CameraFollowPlayer : MonoBehaviour
     public float speed = 2.0f;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         float cameraZ = transform.position.z;
         if (m_FollowPlayerTransform != null)
